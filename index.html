@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人簡介</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+            transition: background-color 0.5s ease;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffdd57;
+        }
+        main {
+            margin: 20px;
+            text-align: center;
+        }
+        .profile-picture {
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            border: 3px solid #333;
+            transition: transform 0.3s;
+        }
+        .profile-picture:hover {
+            transform: scale(1.1);
+        }
+        .bio {
+            margin-top: 15px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .bio h2 {
+            margin-top: 10px;
+            color: #333;
+        }
+        .bio p {
+            margin: 10px 0;
+            color: #555;
+        }
+        .skills, .experience, .contact {
+            margin: 20px 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .skills h3, .experience h3, .contact h3 {
+            color: #333;
+        }
+        .skills .skill, .experience .job {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px 0;
+            transition: transform 0.3s;
+        }
+        .skills .skill:hover, .experience .job:hover {
+            transform: translateY(-5px);
+        }
+        .skills .skill-bar {
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .skills .skill-bar div {
+            background-color: #007bff;
+            height: 20px;
+            width: 0;
+            transition: width 1s;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            width: 50%;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>個人簡介</h1>
+    </header>
+    <nav>
+        <a href="#bio">簡介</a>
+        <a href="#skills">技能</a>
+        <a href="#experience">經歷</a>
+        <a href="#contact">聯絡</a>
+    </nav>
+    <main>
+        <img src="Croquis.jpeg" alt="個人照片" class="profile-picture">
+        <div id="bio" class="bio">
+            <h2>海綿寶寶</h2>
+            <p>Ahoy there! I’m SpongeBob SquarePants! I live in a pineapple under the sea with my pet snail, Gary! I work at the Krusty Krab flipping Krabby Patties, and my best friend is Patrick Star! We have all sorts of fun under the sea! Are you ready, kids? Aye aye, Captain! Come on, let’s have a jellyfishing good time! Yippee!</p>
+        </div>
+        <div id="skills" class="skills">
+            <h3>技能</h3>
+            <div class="skill">
+                <p>HTML</p>
+                <div class="skill-bar"><div style="width: 90%;"></div></div>
+            </div>
+            <div class="skill">
+                <p>CSS</p>
+                <div class="skill-bar"><div style="width: 80%;"></div></div>
+            </div>
+            <div class="skill">
+                <p>JavaScript</p>
+                <div class="skill-bar"><div style="width: 70%;"></div></div>
+            </div>
+        </div>
+        <div id="experience" class="experience">
+            <h3>工作經歷</h3>
+            <div class="job">
+                <p>在蟹堡王餐廳擔任廚師，負責製作美味的蟹堡。</p>
+            </div>
+        </div>
+        <div id="contact" class="contact">
+            <h3>聯絡我</h3>
+            <form class="contact-form">
+                <input type="text" placeholder="你的名字" required>
+                <input type="email" placeholder="你的電子郵件" required>
+                <textarea placeholder="你的訊息" rows="5" required></textarea>
+                <button type="submit" class="button">送出</button>
+            </form>
+        </div>
+        <button class="button" onclick="changeBackgroundColor()">改變背景顏色</button>
+    </main>
+    <footer>
+        <p>&copy; by SpongeBob</p>
+    </footer>
+
+    <script>
+        function changeBackgroundColor() {
+            const colors = ['#f4f4f9', '#e0f7fa', '#ffe0b2', '#c8e6c9', '#f8bbd0'];
+            const currentColor = document.body.style.backgroundColor;
+            let newColor;
+
+            do {
+                newColor = colors[Math.floor(Math.random() * colors.length)];
+            } while (newColor === currentColor);
+
+            document.body.style.backgroundColor = newColor;
+        }
+    </script>
+</body>
+</html>
